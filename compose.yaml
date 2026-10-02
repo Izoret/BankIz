@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:15
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ~/2data/BankIz:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: ${PG_PASSWD}
@@ -21,6 +21,3 @@ services:
       RAILS_ENV: production
       DATABASE_URL: postgres://root:${PG_PASSWD}@db:5432/bankiz
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY:?We need a Master key!}
-
-volumes:
-  postgres_data:
