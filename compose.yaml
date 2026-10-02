@@ -5,7 +5,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
+      POSTGRES_PASSWORD: ${PG_PASSWD}
       POSTGRES_DB: bankiz
 
   web:
@@ -19,7 +19,7 @@ services:
       - db
     environment:
       RAILS_ENV: production
-      DATABASE_URL: postgres://root:root@db:5432/bankiz
+      DATABASE_URL: postgres://root:${PG_PASSWD}@db:5432/bankiz
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY:?We need a Master key!}
     stdin_open: true
     tty: true
